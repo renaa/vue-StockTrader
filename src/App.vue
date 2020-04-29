@@ -2,6 +2,7 @@
   <div id="app">
     <app-header></app-header>
     <router-view></router-view>
+    <div class="my-widget">fdf</div>
   </div>
 </template>
 
@@ -27,8 +28,6 @@ export default {
   body {
     padding: 8px
   }
-
-  @import 'assets/custom-vars.scss';
 
   // Import Bootstrap and BootstrapVue source SCSS files
   @import '~bootstrap/scss/bootstrap.scss';
