@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-navbar class="custom noselect" toggleable="sm" type="dark" variant="info">
-      <b-navbar-brand to="/">StockTrader</b-navbar-brand>
+      <b-navbar-brand to="/" class="my-widget">StockTrader</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -39,57 +39,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '../../custom.scss';
 
-.noselect {
-  -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Opera and Firefox */
-}
-.custom {
-  // https://www.gradient-animator.com/
-  background: linear-gradient(270deg, #00eeb0, #ad00ee, #eeb400);
-  background-size: 600% 600%;
-
-  -webkit-animation: custom 30s ease infinite;
-  -moz-animation: custom 30s ease infinite;
-  animation: custom 30s ease infinite;
-
-  @-webkit-keyframes custom {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-  @-moz-keyframes custom {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-  @keyframes custom {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-}
 </style>
