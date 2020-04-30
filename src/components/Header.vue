@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-navbar class="custom noselect" toggleable="sm" type="dark" variant="info">
+    <b-navbar class="custom-header noselect" toggleable="sm" type="dark" variant="info">
       <b-navbar-brand to="/" class="my-widget">StockTrader</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
