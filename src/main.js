@@ -18,6 +18,11 @@ Vue.use(IconsPlugin)
 
 import store from './store/store'
 
+Vue.filter('currency', (value) => {
+  return '$' + value.toLocaleString()
+})
+
+
 Vue.config.productionTip = false
 
 new Vue({

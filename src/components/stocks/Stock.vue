@@ -4,8 +4,8 @@
     {{stock.name}} <span class="small text-success"> Price: {{stock.price}}</span>
   </div>
   <div class="card-body d-flex flex-row">
-    <b-form-input type="number" class="form-cotroll m-1" v-model="quantity"></b-form-input>
-    <b-button @click="buyStock" placeholder="Quantity"  class="btn-outline m-1" :disabled="quantity <=0 || !Number.isInteger(parseInt(quantity))">Buy</b-button>
+    <b-form-input type="number" class="form-cotroll m-1" :class="{danger: insufficientFunds}" v-model="quantity"></b-form-input>
+    <b-button @click="buyStock" placeholder="Quantity"  class="btn-outline m-1" :disabled="insufficientFunds || quantity <=0 || !Number.isInteger(parseInt(quantity))">{{insufficientFunds ? '💸' : 'Buy'}}</b-button>
   </div>
 </div>
 </template>
@@ -18,6 +18,14 @@ export default {
       quantity: 0,
     }
   },
+  computed: {
+    insufficientFunds() {
+      return this.quantity * this.stock.price > this.funds
+    },
+    funds() {
+      return this.$store.getters.funds
+    }
+  },
   methods: {
     buyStock() {
       const order = {
@@ -26,6 +34,7 @@ export default {
         quantity: this.quantity
       }
       console.log(order)
+      this.$store.dispatch('buyStock', order)
       this.quantity = 0
     },
     disableButton() {
@@ -36,6 +45,11 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.danger{
+  color: var(--danger);
 
+}  .danger:focus{
+  color: var(--danger);
+}
 </style>

@@ -10,7 +10,6 @@
           <b-nav-item to="/portfolio">Portfolio</b-nav-item>
           <b-nav-item to="/stocks">Stocks</b-nav-item>
         </b-navbar-nav>
-
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
           <b-nav-item href="#">End Day</b-nav-item>
@@ -18,6 +17,7 @@
             <b-dropdown-item href="#">Save</b-dropdown-item>
             <b-dropdown-item href="#">Load</b-dropdown-item>
           </b-nav-item-dropdown>
+        <strong class="navbar-text navbar-right">Funds: {{ funds | currency }}</strong>
 
           <!-- <b-nav-item-dropdown right>
           <template v-slot:button-content>
@@ -34,7 +34,11 @@
 
 <script>
 export default {
-  name: "Header"
+  computed: {
+    funds() {
+      return this.$store.getters.funds
+    }
+  }
 };
 </script>
 
