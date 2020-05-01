@@ -12,12 +12,12 @@
         </b-navbar-nav>
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-          <b-nav-item href="#">End Day</b-nav-item>
+          <b-nav-item href="#" @click="endDay">End Day</b-nav-item>
           <b-nav-item-dropdown text="Save & Load" right>
             <b-dropdown-item href="#">Save</b-dropdown-item>
             <b-dropdown-item href="#">Load</b-dropdown-item>
           </b-nav-item-dropdown>
-        <strong class="navbar-text navbar-right">Funds: {{ funds | currency }}</strong>
+          <strong class="navbar-text navbar-right">Funds: {{ funds | currency }}</strong>
 
           <!-- <b-nav-item-dropdown right>
           <template v-slot:button-content>
@@ -33,16 +33,42 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   computed: {
     funds() {
-      return this.$store.getters.funds
+      return this.$store.getters.funds;
+    }
+  },
+  methods: {
+    ...mapActions(["randomizeStocks"]),
+    endDay() {
+      this.randomizeStocks();
     }
   }
 };
 </script>
 
 <style scoped lang="scss">
-@import '../../custom.scss';
+@import "../../custom.scss";
 
+.custom-header {
+  // https://www.gradient-animator.com/
+  background: linear-gradient(270deg, #00eeb0, #ad00ee, #eeb400);
+  background-size: 600% 600%;
+  z-index: 1;
+  animation: custom 30s ease infinite;
+
+  @keyframes custom {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+}
 </style>
