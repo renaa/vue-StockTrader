@@ -49,8 +49,8 @@ export default {
         stockPrice: this.stock.price,
         quantity: this.quantity
       };
-      this.placeSellorder(order);
-      this.quantity = 0;
+      this.placeSellorder(order)
+      this.quantity = 0
     }
   }
 };

@@ -14,8 +14,8 @@
         <b-navbar-nav class="ml-auto">
           <b-nav-item href="#" @click="endDay">End Day</b-nav-item>
           <b-nav-item-dropdown text="Save & Load" right>
-            <b-dropdown-item href="#">Save</b-dropdown-item>
-            <b-dropdown-item href="#">Load</b-dropdown-item>
+            <b-dropdown-item @click="saveData" href="#">Save</b-dropdown-item>
+            <b-dropdown-item @click="loadData" href="#">Load</b-dropdown-item>
           </b-nav-item-dropdown>
           <strong class="navbar-text navbar-right">Funds: {{ funds | currency }}</strong>
 
@@ -41,9 +41,23 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["randomizeStocks"]),
+    ...mapActions({
+      randomizeStocks: 'randomizeStocks',
+      fetchData: 'loadData'
+    }),
     endDay() {
-      this.randomizeStocks();
+      this.randomizeStocks()
+    },
+    saveData() {
+      const data = {
+        funds: this.$store.getters.funds,
+        stockPortfolio: this.$store.getters.stockPortfolio,
+        stocks: this.$store.getters.stocks
+      };
+      this.$http.put("data.json", data)
+    },
+    loadData() {
+      this.fetchData()
     }
   }
 };
